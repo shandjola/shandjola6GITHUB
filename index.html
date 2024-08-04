@@ -6,59 +6,74 @@
     <title>Page de Connexion</title>
     <style>
         body {
-            background-color: yellow; /* Couleur de fond jaune */
+            background-color: #FFD700; /* Jaune */
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
         }
 
         .login-container {
-            background-color: black; /* Fond noir du formulaire */
-            color: white; /* Couleur du texte */
-            padding: 40px;
+            background-color: #000000; /* Noir */
+            padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            box-sizing: border-box;
         }
 
         .login-container h2 {
-            margin-bottom: 20px;
+            color: white;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .login-container label {
+            color: white;
+            display: block;
+            margin-bottom: 0.5rem;
         }
 
         .login-container input[type="text"],
         .login-container input[type="password"] {
             width: 100%;
-            padding: 10px;
-            margin: 10px 0;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
             border: none;
             border-radius: 5px;
             box-sizing: border-box;
         }
 
         .login-container input[type="submit"] {
-            background-color: white; /* Bouton avec fond blanc */
-            color: black; /* Texte noir */
-            padding: 10px 20px;
+            width: 100%;
+            padding: 0.75rem;
             border: none;
             border-radius: 5px;
+            background-color: #FFD700; /* Jaune */
+            color: black;
             cursor: pointer;
+            font-size: 1rem;
             transition: background-color 0.3s ease;
         }
 
         .login-container input[type="submit"]:hover {
-            background-color: #f0f0f0;
+            background-color: #FFA500; /* Orange */
         }
     </style>
 </head>
 <body>
     <div class="login-container">
         <h2>Connexion</h2>
-        <form action="#" method="POST">
-            <input type="text" placeholder="Nom d'utilisateur" required>
-            <input type="password" placeholder="Mot de passe" required>
+        <form>
+            <label for="username">Nom d'utilisateur</label>
+            <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur" required>
+            
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" required>
+            
             <input type="submit" value="Se connecter">
         </form>
     </div>
