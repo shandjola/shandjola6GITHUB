@@ -94,7 +94,7 @@
             <label for="password">Mot de passe</label>
             <div class="password-container">
                 <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" required>
-                <span class="toggle-password" onclick="togglePassword()">👁️</span>
+                <span class="toggle-password" onclick="togglePassword()">&#128065;</span> <!-- Icône d'œil par défaut -->
             </div>
             
             <input type="submit" value="Se connecter">
@@ -107,13 +107,12 @@
             var passwordToggle = document.querySelector('.toggle-password');
             if (passwordField.type === 'password') {
                 passwordField.type = 'text';
-                passwordToggle.textContent = '🙈'; // Icône pour masquer le mot de passe
+                passwordToggle.innerHTML = '&#128064;'; // Icône pour masquer le mot de passe (œil barré)
             } else {
                 passwordField.type = 'password';
-                passwordToggle.textContent = '👁️'; // Icône pour afficher le mot de passe
+                passwordToggle.innerHTML = '&#128065;'; // Icône pour afficher le mot de passe (œil)
             }
         }
     </script>
 </body>
 </html>
-
