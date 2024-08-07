@@ -1,7 +1,6 @@
 // Variables d'authentification
 const authNom = "admin";
 const authPassword = "password123";
-let isFormSubmission = false;
 
 function submitForm() {
     const form = document.getElementById('registrationForm');
@@ -38,7 +37,6 @@ function showAuthForm() {
 function hideAuthForm() {
     document.getElementById('authFormContainer').style.display = 'none';
     document.getElementById('registrationForm').classList.remove('blur');
-    isFormSubmission = false;
 }
 
 function authenticate() {
