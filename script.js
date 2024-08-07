@@ -7,7 +7,8 @@ document.getElementById('submitButton').addEventListener('click', submitForm);
 document.getElementById('showAuthFormButton').addEventListener('click', showAuthForm);
 
 // Fonction pour soumettre le formulaire
-function submitForm() {
+function submitForm(event) {
+    event.preventDefault();  // Empêche le comportement par défaut du formulaire
     const form = document.getElementById('registrationForm');
     const nom = document.getElementById('nom').value;
     const postnom = document.getElementById('postnom').value;
@@ -45,7 +46,8 @@ function hideAuthForm() {
 }
 
 // Fonction d'authentification
-function authenticate() {
+function authenticate(event) {
+    event.preventDefault();  // Empêche le comportement par défaut du formulaire
     const enteredNom = document.getElementById('authNom').value;
     const enteredPassword = document.getElementById('authPassword').value;
 
@@ -82,3 +84,6 @@ function loadTable() {
 if (window.location.pathname.endsWith('table.html')) {
     window.onload = loadTable;
 }
+
+// Associer le bouton d'authentification à sa fonction
+document.getElementById('authButton').addEventListener('click', authenticate);
