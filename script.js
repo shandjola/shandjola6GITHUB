@@ -1,10 +1,12 @@
 // Variables d'authentification
 const authNom = "admin";
-const authPassword = "shandjola";
+const authPassword = "shandjola25";
 
+// Associer les boutons à leurs fonctions
 document.getElementById('submitButton').addEventListener('click', submitForm);
 document.getElementById('showAuthFormButton').addEventListener('click', showAuthForm);
 
+// Fonction pour soumettre le formulaire
 function submitForm() {
     const form = document.getElementById('registrationForm');
     const nom = document.getElementById('nom').value;
@@ -15,16 +17,14 @@ function submitForm() {
     const classe = document.getElementById('classe').value;
 
     if (nom && postnom && prenom && annee && sexe && classe) {
-        const row = {
-            nom, postnom, prenom, annee, sexe, classe
-        };
+        const row = { nom, postnom, prenom, annee, sexe, classe };
 
-        // Store the data in localStorage
+        // Stocker les données dans le localStorage
         let rows = JSON.parse(localStorage.getItem('rows')) || [];
         rows.push(row);
         localStorage.setItem('rows', JSON.stringify(rows));
 
-        // Clear the form
+        // Réinitialiser le formulaire
         form.reset();
         alert('Enregistrement réussi !');
     } else {
@@ -32,16 +32,19 @@ function submitForm() {
     }
 }
 
+// Fonction pour afficher le formulaire d'authentification
 function showAuthForm() {
     document.getElementById('authFormContainer').style.display = 'flex';
     document.getElementById('registrationForm').classList.add('blur');
 }
 
+// Fonction pour masquer le formulaire d'authentification
 function hideAuthForm() {
     document.getElementById('authFormContainer').style.display = 'none';
     document.getElementById('registrationForm').classList.remove('blur');
 }
 
+// Fonction d'authentification
 function authenticate() {
     const enteredNom = document.getElementById('authNom').value;
     const enteredPassword = document.getElementById('authPassword').value;
@@ -53,7 +56,7 @@ function authenticate() {
     }
 }
 
-// Hide auth form if clicking outside of it
+// Masquer le formulaire d'authentification si on clique en dehors de celui-ci
 document.addEventListener('click', function(event) {
     const authForm = document.querySelector('.auth-form');
     if (!authForm.contains(event.target) && !event.target.closest('button')) {
@@ -61,6 +64,7 @@ document.addEventListener('click', function(event) {
     }
 });
 
+// Fonction pour charger les données dans le tableau
 function loadTable() {
     const table = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
     const rows = JSON.parse(localStorage.getItem('rows')) || [];
@@ -74,7 +78,7 @@ function loadTable() {
     });
 }
 
-// Call loadTable when table.html is loaded
+// Charger les données du tableau lors du chargement de table.html
 if (window.location.pathname.endsWith('table.html')) {
     window.onload = loadTable;
 }
