@@ -40,6 +40,15 @@ button:hover {
     background-color: #45a049;
 }
 
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-container button {
+    width: 48%;
+}
+
 .auth-form-container {
     display: none;
     position: fixed;
@@ -66,4 +75,20 @@ button:hover {
 
 .blur {
     filter: blur(5px);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+    text-align: left;
 }
