@@ -1,6 +1,6 @@
 // Variables d'authentification
 const authNom = "admin";
-const authPassword = "shandjola25";
+const authPassword = "password123";
 
 // Associer les boutons à leurs fonctions
 document.getElementById('submitButton').addEventListener('click', submitForm);
@@ -59,7 +59,7 @@ function authenticate() {
 // Masquer le formulaire d'authentification si on clique en dehors de celui-ci
 document.addEventListener('click', function(event) {
     const authForm = document.querySelector('.auth-form');
-    if (!authForm.contains(event.target) && !event.target.closest('button')) {
+    if (!authForm.contains(event.target) && !event.target.closest('#showAuthFormButton')) {
         hideAuthForm();
     }
 });
