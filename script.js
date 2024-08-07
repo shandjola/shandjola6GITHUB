@@ -1,6 +1,6 @@
 // Variables d'authentification
 const authNom = "admin";
-const authPassword = "123456789";
+const authPassword = "password123";
 let isFormSubmission = false;
 
 function submitForm() {
@@ -22,9 +22,9 @@ function submitForm() {
         rows.push(row);
         localStorage.setItem('rows', JSON.stringify(rows));
 
-        // Set flag and show auth form
-        isFormSubmission = true;
-        showAuthForm();
+        // Clear the form
+        form.reset();
+        alert('Enregistrement réussi !');
     } else {
         alert('Veuillez remplir tous les champs.');
     }
@@ -46,11 +46,7 @@ function authenticate() {
     const enteredPassword = document.getElementById('authPassword').value;
 
     if (enteredNom === authNom && enteredPassword === authPassword) {
-        if (isFormSubmission) {
-            window.location.href = 'table.html';
-        } else {
-            window.location.href = 'table.html';
-        }
+        window.location.href = 'table.html';
     } else {
         alert('Nom ou mot de passe incorrect.');
     }
