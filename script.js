@@ -1,6 +1,9 @@
 // Variables d'authentification
 const authNom = "admin";
-const authPassword = "password123";
+const authPassword = "123456789";
+
+document.getElementById('submitButton').addEventListener('click', submitForm);
+document.getElementById('showAuthFormButton').addEventListener('click', showAuthForm);
 
 function submitForm() {
     const form = document.getElementById('registrationForm');
