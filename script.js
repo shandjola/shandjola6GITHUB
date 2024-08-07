@@ -1,3 +1,7 @@
+// Variables d'authentification
+const authNom = "admin";
+const authPassword = "password123";
+
 function submitForm() {
     const form = document.getElementById('registrationForm');
     const nom = document.getElementById('nom').value;
@@ -23,6 +27,35 @@ function submitForm() {
         alert('Veuillez remplir tous les champs.');
     }
 }
+
+function showAuthForm() {
+    document.getElementById('authFormContainer').style.display = 'flex';
+    document.getElementById('registrationForm').classList.add('blur');
+}
+
+function hideAuthForm() {
+    document.getElementById('authFormContainer').style.display = 'none';
+    document.getElementById('registrationForm').classList.remove('blur');
+}
+
+function authenticate() {
+    const enteredNom = document.getElementById('authNom').value;
+    const enteredPassword = document.getElementById('authPassword').value;
+
+    if (enteredNom === authNom && enteredPassword === authPassword) {
+        window.location.href = 'table.html';
+    } else {
+        alert('Nom ou mot de passe incorrect.');
+    }
+}
+
+// Hide auth form if clicking outside of it
+document.addEventListener('click', function(event) {
+    const authForm = document.querySelector('.auth-form');
+    if (!authForm.contains(event.target) && !event.target.closest('button')) {
+        hideAuthForm();
+    }
+});
 
 function loadTable() {
     const table = document.getElementById('dataTable').getElementsByTagName('tbody')[0];

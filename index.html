@@ -32,7 +32,22 @@
         <input type="text" id="classe" name="classe" required><br><br>
 
         <button type="button" onclick="submitForm()">Enregistrer</button>
+        <button type="button" onclick="showAuthForm()">Voir le tableau</button>
     </form>
+
+    <div id="authFormContainer" class="auth-form-container">
+        <div class="auth-form">
+            <h2>Authentification</h2>
+            <label for="authNom">Nom:</label>
+            <input type="text" id="authNom" name="authNom" required><br><br>
+
+            <label for="authPassword">Mot de Passe:</label>
+            <input type="password" id="authPassword" name="authPassword" required><br><br>
+
+            <button type="button" onclick="authenticate()">Se connecter</button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
