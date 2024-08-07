@@ -1,118 +1,38 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page de Connexion</title>
-    <style>
-        body {
-            background-color: #FFD700; /* Jaune */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        .login-container {
-            background-color: #000000; /* Noir */
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 90%;
-            max-width: 400px;
-            box-sizing: border-box;
-        }
-
-        .login-container h2 {
-            color: white;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .login-container label {
-            color: white;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .login-container input[type="text"],
-        .login-container input[type="password"] {
-            width: 100%;
-            padding: 0.75rem;
-            margin-bottom: 1rem;
-            border: none;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        .password-container {
-            position: relative;
-        }
-
-        .password-container input[type="password"] {
-            padding-right: 2.5rem; /* Pour laisser de l'espace à l'icône */
-        }
-
-        .toggle-password {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: #FFD700; /* Jaune */
-            font-size: 1.2rem;
-            border: none;
-            background: none;
-        }
-
-        .login-container input[type="submit"] {
-            width: 100%;
-            padding: 0.75rem;
-            border: none;
-            border-radius: 5px;
-            background-color: #FFD700; /* Jaune */
-            color: black;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
-        }
-
-        .login-container input[type="submit"]:hover {
-            background-color: #FFA500; /* Orange */
-        }
-    </style>
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="login-container">
-        <h2>Connexion</h2>
-        <form>
-            <label for="username">Nom d'utilisateur</label>
-            <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur" required>
-            
-            <label for="password">Mot de passe</label>
-            <div class="password-container">
-                <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" required>
-                <span class="toggle-password" onclick="togglePassword()">&#128065;</span> <!-- Icône d'œil par défaut -->
-            </div>
-            
-            <input type="submit" value="Se connecter">
-        </form>
-    </div>
+    <h1>Registration Form</h1>
+    <form id="registrationForm">
+        <label for="nom">Nom:</label>
+        <input type="text" id="nom" name="nom" required><br><br>
 
-    <script>
-        function togglePassword() {
-            var passwordField = document.getElementById('password');
-            var passwordToggle = document.querySelector('.toggle-password');
-            if (passwordField.type === 'password') {
-                passwordField.type = 'text';
-                passwordToggle.innerHTML = '&#128064;'; // Icône pour masquer le mot de passe (œil barré)
-            } else {
-                passwordField.type = 'password';
-                passwordToggle.innerHTML = '&#128065;'; // Icône pour afficher le mot de passe (œil)
-            }
-        }
-    </script>
+        <label for="postnom">Post Nom:</label>
+        <input type="text" id="postnom" name="postnom" required><br><br>
+
+        <label for="prenom">Pre Nom:</label>
+        <input type="text" id="prenom" name="prenom" required><br><br>
+
+        <label for="annee">Année de Naissance:</label>
+        <input type="number" id="annee" name="annee" required><br><br>
+
+        <label for="sexe">Sexe:</label>
+        <select id="sexe" name="sexe" required>
+            <option value="">Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select><br><br>
+
+        <label for="classe">Classe:</label>
+        <input type="text" id="classe" name="classe" required><br><br>
+
+        <button type="button" onclick="submitForm()">Enregistrer</button>
+    </form>
+    <script src="script.js"></script>
 </body>
 </html>
