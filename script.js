@@ -9,7 +9,6 @@ document.getElementById('showAuthFormButton').addEventListener('click', showAuth
 // Fonction pour soumettre le formulaire
 function submitForm(event) {
     event.preventDefault();  // Empêche le comportement par défaut du formulaire
-    const form = document.getElementById('registrationForm');
     const nom = document.getElementById('nom').value;
     const postnom = document.getElementById('postnom').value;
     const prenom = document.getElementById('prenom').value;
@@ -18,19 +17,22 @@ function submitForm(event) {
     const classe = document.getElementById('classe').value;
 
     if (nom && postnom && prenom && annee && sexe && classe) {
-        const row = { nom, postnom, prenom, annee, sexe, classe };
-
-        // Stocker les données dans le localStorage
-        let rows = JSON.parse(localStorage.getItem('rows')) || [];
-        rows.push(row);
-        localStorage.setItem('rows', JSON.stringify(rows));
-
-        // Réinitialiser le formulaire
-        form.reset();
+        addRowToTable({ nom, postnom, prenom, annee, sexe, classe });
+        document.getElementById('registrationForm').reset();
         alert('Enregistrement réussi !');
     } else {
         alert('Veuillez remplir tous les champs.');
     }
+}
+
+// Fonction pour ajouter une ligne au tableau
+function addRowToTable(row) {
+    const table = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+    const newRow = table.insertRow();
+    Object.values(row).forEach(value => {
+        const cell = newRow.insertCell();
+        cell.textContent = value;
+    });
 }
 
 // Fonction pour afficher le formulaire d'authentification
@@ -66,24 +68,13 @@ document.addEventListener('click', function(event) {
     }
 });
 
-// Fonction pour charger les données dans le tableau
-function loadTable() {
-    const table = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
-    const rows = JSON.parse(localStorage.getItem('rows')) || [];
-
-    rows.forEach(row => {
-        const newRow = table.insertRow();
-        Object.values(row).forEach(value => {
-            const cell = newRow.insertCell();
-            cell.textContent = value;
-        });
-    });
-}
+// Associer le bouton d'authentification à sa fonction
+document.getElementById('authButton').addEventListener('click', authenticate);
 
 // Charger les données du tableau lors du chargement de table.html
 if (window.location.pathname.endsWith('table.html')) {
-    window.onload = loadTable;
+    document.addEventListener('DOMContentLoaded', () => {
+        const rows = JSON.parse(sessionStorage.getItem('rows')) || [];
+        rows.forEach(row => addRowToTable(row));
+    });
 }
-
-// Associer le bouton d'authentification à sa fonction
-document.getElementById('authButton').addEventListener('click', authenticate);
